@@ -4,9 +4,9 @@ This is v1.0 of the project and more languages could be added in the future
 English Version:
 
 
-I - Code it in C#
+I - Code it in C
 
-The necessary C# elements:
+The necessary C elements:
 - Structures
 - Pointers
 - Arrays
@@ -23,36 +23,14 @@ The necessary C# elements:
 
 (Note: comment on all program(s).)
 
-Once the 3rd Stage is completed, it will need to be integrated with Processing or Python for the display aspect.
-
-
-II - Code it in Java
-
-The equivalent C# elements in Java needed:
-- Structures
-- Pointers
-- Arrays
-- External files
-
-1st Stage:
-- Create a program that manages 5 parking spaces, whether they are occupied or empty.
-
-2nd Stage:
-- Associate an external file that will store the state of the parking spaces.
-
-3rd Stage:
-- Improve this program to handle 3 floors with 99 spaces each, i.e., PARK[3][99].
-
-
-
 French Version:
 
 PROJET D'APPLICATION DE PLACE DE PARKING, AVEC GESTION DE FICHIERS EXTERNES.
 
 
-I - Le coder en C#
+I - Le coder en C
 
-Les éléments de C# nécessaire:
+Les éléments de C nécessaire:
 - Les structures
 - Les pointeurs
 - Les tableaux
@@ -70,21 +48,3 @@ Les éléments de C# nécessaire:
 ( Note : commenter tout le(s) programmes(s) )
 
 Lorsque le 3rd Stage est passée, il faudra l'associer avec Processing ou Python pour l'aspect affichage.
-
-
-II - Coder en Java
-
-L'équivalent des éléments de C# en Java nécessaires:
-- Les structures
-- Les pointeurs
-- Les tableaux
-- Les fichiers externes
-
-1st Stage:
-- Créer un programme gérant 5 places de parking, remplies et/ou vides
-
-2nd Stage:
-- Assoscier un fichier externe qui stockera l'état des places de parking
-
-3rd Stage:
-- Améliorer ce programme pour 3 étages de 99 places, soit PARK[3][99]
