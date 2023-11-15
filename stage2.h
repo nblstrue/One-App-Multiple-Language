@@ -6,82 +6,71 @@
 #include "string.h"
 #include "variables.h"
 
-FILE *stock;
-
-void stock_open(FILE *a)
+void send(FILE* file, client *p)
 {
-    a = fopen(fichier, "a+");
-    if(a == NULL)
+    fprintf(file, "%s %s %d\n", p->nom, p->pnom, p->place);
+}
+
+void recup(FILE *file, client *p)
+{
+    fscanf(file, "%s %s %d\n", p->nom, p->pnom, &p->place);
+}
+
+void open(FILE *file, char *name)
+{
+    file = fopen(name, "a+");
+}
+
+void w_r(FILE *file, char *name)
+{
+    file = fopen(name, "r+");
+}
+
+void close(FILE *file)
+{
+    fclose(file);
+}
+
+void show(client *p)
+{
+    printf("\n\n%s | %s | %d\n\n", p->nom, p->pnom, p->place);
+}
+
+void stage2(client *p_s, client *p_r)
+{
+    int choice;
+
+    info = fopen(fichier, "a+");
+    if(info != NULL)
     {
-        printf("\n\nFATAL ERROR: cannot open or create 'stock'");
+        w_r(info, fichier);
+        printf("\n\nVoulez vous envoyer des informations ou récupérer les anciennes (oui = 1 et non = 0)\n=>");
+        fflush(stdin);
+        scanf("%d", &choice);
+
+        while(choice > 1 && choice < 0)
+        {
+            printf("\n\nFATAL ERROR: incorrect value send (choice = %d)", &choice);
+            printf("\n\nVoulez vous envoyer des informations ou recuperer les anciennes (envoyer = 1 et recuperer = 0)\n=>");
+            fflush(stdin);
+            scanf("%d", &choice);
+        }
+        
+        if(choice == 1)
+        {
+            send(info, p_s);
+            close(info);
+        }
+        else
+        {
+            recup(info, p_r);
+            close(info);
+        }
+    }
+    else
+    {
+        printf("\n\nFATAL ERROR: cannot create or open the stocking document");
         exit(-1);
     }
-}
 
-int stock_close(FILE *a)
-{
-    int close = fclose(a);
-    if(close == EOF)
-    {
-        return -1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-void send(client *p1, FILE *a)
-{
-    fprintf(a, "%s %s ", p1->nom, p1->pnom);
-    if(p1->place == 1)
-    {
-        fprintf(a, "Client gare\n");
-    }
-    else
-    {
-        fprintf(a, "Client pas gare\n");
-    }
-}
-
-void recup(client *p1, FILE *a)
-{
-    strcpy(p_CL->nom, "Lathro-Seri");
-    strcpy(p_CL->pnom, "Nathan");
-    p_CL->place = 1;
-    
-    CH50 place;
-    char vrai[] = "Client gare";
-
-    fscanf(stock, "%s %s %s\n", p1->nom, p1->pnom, place);
-    
-    int z = strlen(place);
-    strcpy(place[z - 1], '\0');
-
-    int b = strcmp(place, vrai);
-    if(b == 0)
-    {
-        p1->place = 1;
-    }
-    else
-    {
-        p1->place = 0;
-    }
-}
-
-void stage2(client *p)
-{
-    client test;
-    client *p_test = &test;
-
-    printf("\nPassed\n");
-
-    stock_open(stock);
-    send(p, stock);
-    stock_close(stock);
-    stock_open(stock);
-    recup(p_test, stock);
-    stock_close(stock);
-
-    printf("\n\nNom = %s\nPrenom = %s\nPlace = %d", p_test->nom, p_test->pnom, p_test->place);
 }

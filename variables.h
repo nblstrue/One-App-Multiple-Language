@@ -1,5 +1,6 @@
-#define fichier "stock.txt"
+char fichier[] = "stock.txt";
 
+FILE *info;
 typedef char CH50[51];
 typedef char CH30[31];
 int lengh = 5;
